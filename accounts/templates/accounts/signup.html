@@ -12,42 +12,84 @@
 
 <form method="POST" action="{% url 'signup' %}">
 {% csrf_token %}
-Username:
-<br />
-<input type="text" name="username" />
-<br />
-Email:
-<br />
-<input type="text" name="email" />
-<br />
-Birth Date:
-<br />
-<input type="text" name="birth_date" />
-<br />
-Height:
-<br />
-<input type="text" name="height" />
-<br />
-Weight:
-<br />
-<input type="text" name="weight" />
-<br />
-Sex:
-<br />
-<input type="text" name="sex" />
-<br />
-Calories Require Per Day:
-<br />
-<input type="text" name="cal_per_day" />
-<br />
-Password:
-<br />
-<input type="password" name="password1" />
-<br />
-Confirm Password:
-<br />
-<input type="password" name="password2" />
-<br />
+<div class="form-group row">
+  <label for="inputName" class="col-sm-2 col-form-label">User Name</label>
+  <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputName" placeholder="UserName" name="username">
+  </div>
+</div>  
+<div class="form-group row">
+  <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-3">
+    <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="datepicker" class="col-sm-2 col-form-label">Birth Date</label>
+    <div class="col-sm-3">
+        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" name="birth_date">
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style type="text/css">
+        // solution 1:
+        .datepicker {
+            font-size: 0.875em;
+        }
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+        
+        .datepicker td, .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        
+    </style>
+<script type="text/javascript">
+    $('#datepicker').datepicker({
+        weekStart: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true,
+    });
+    $('#datepicker').datepicker("setDate", new Date());
+</script>
+<div class="form-group row">
+  <label for="inputHeight" class="col-sm-2 col-form-label">Height</label>
+  <div class="col-sm-3">
+    <input type="number" class="form-control" id="inputHeight" placeholder="Height" name="height">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="inputS" class="col-sm-2 col-form-label">Weight</label>
+  <div class="col-sm-3">
+    <input type="number" class="form-control" id="inputWeight" placeholder="Weight" name="weight">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="sex" class="col-sm-2 col-form-label">Sex</label>
+  <div class="col-sm-3">
+  <select class="custom-select mr-sm-2" id="sex" name="sex">
+    <option selected>Choose...</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+  </select>
+  </div>
+</div> 
+<div class="form-group row">
+  <label for="inputPassword1" class="col-sm-2 col-form-label">Password</label>
+  <div class="col-sm-3">
+    <input type="password" class="form-control" id="inputPassword1" placeholder="Password" name="password1">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="inputPassword2" class="col-sm-2 col-form-label">Confirm Password</label>
+  <div class="col-sm-3">
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password" name="password2">
+  </div>
+</div>
 <br />
 <input class="btn btn-primary" type="submit" value="Sign Up!" />
 </form>

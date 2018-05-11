@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import date
-
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 
@@ -22,6 +21,21 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.name 
     
+    def age(self):
+        today = date.today()
+
+        try: 
+            birthday = self.birth_date.replace(year=today.year)
+        # raised when birth date is February 29 and the current year is not a leap year
+        except ValueError:
+            birthday = self.birth_date.replace(year=today.year, day=self.birth_date.day-1)
+
+        if birthday > today:
+            return today.year - self.birth_date.year - 1
+        else:
+            return today.year - self.birth_date.year       
+    
     def save(self, *args, **kwargs):
         self.bmi = self.weight / (self.height/100) ** 2
+        self.cal_per_day = 10 * int(self.weight) + 6.25 * int(self.height) - 5 * self.age() + 5
         super().save(*args, **kwargs)  # Call the "real" save() method.
