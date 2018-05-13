@@ -9,14 +9,13 @@ class CustomUser(AbstractUser):
         ('F', 'Female'),
     )    
     # First/last name is not a global-friendly pattern
-    name = models.CharField(blank=True, max_length=255)
     birth_date = models.DateField(default=date.today)
     sex = models.CharField(max_length=1, choices=SEX)
-    height = models.SmallIntegerField(null=True)
-    weight = models.SmallIntegerField(null=True)
+    height = models.DecimalField(null=True,max_digits=7,decimal_places=1)
+    weight = models.DecimalField(null=True,max_digits=7,decimal_places=2)
     bmi = models.DecimalField(null=True,max_digits=7,decimal_places=2)
     cal_per_day = models.SmallIntegerField(null=True,default=2000)
-    REQUIRED_FIELDS = ['email','birth_date', 'height','weight','sex','cal_per_day']
+    REQUIRED_FIELDS = ['email','birth_date', 'height','weight','sex']
     
     def __str__(self):
         return self.name 
@@ -37,5 +36,8 @@ class CustomUser(AbstractUser):
     
     def save(self, *args, **kwargs):
         self.bmi = self.weight / (self.height/100) ** 2
-        self.cal_per_day = 10 * int(self.weight) + 6.25 * int(self.height) - 5 * self.age() + 5
+        if self.sex == 'M':        
+            self.cal_per_day = round((10 * float(self.weight)) + (6.25 * float(self.height)) - (5 * self.age()) + 5)
+        else:
+            self.cal_per_day = roun((10 * float(self.weight)) + (6.25 * float(self.height)) - (5 * self.age()) - 161)
         super().save(*args, **kwargs)  # Call the "real" save() method.
