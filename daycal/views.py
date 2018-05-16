@@ -1,4 +1,7 @@
 from django.shortcuts import render
-
+from .models import Ingredient, Food, Meal
 def home(request):
-    return render(request, 'daycal/home.html')
+    ingredients = Ingredient.objects
+    foods = Food.objects
+    meals = Meal.objects
+    return render(request, 'daycal/home.html', {'foods':foods, 'meals':meals,'ingredients':ingredients})
