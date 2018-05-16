@@ -18,7 +18,7 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['email','birth_date', 'height','weight','sex']
     
     def __str__(self):
-        return self.name 
+        return self.username 
     
     def age(self):
         today = date.today()
