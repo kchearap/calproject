@@ -12,6 +12,7 @@ class Ingredient(models.Model):
 class Food(models.Model):
     name = models.CharField(blank=False, max_length=255)
     ingredients = models.ManyToManyField(Ingredient,related_name='ingredients')
+    description = models.CharField(blank=True, max_length=255)
     image = models.ImageField(upload_to='images/')
     calorie = models.SmallIntegerField(null=True,default=2000)
 

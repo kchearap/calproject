@@ -7,10 +7,15 @@ def home(request):
     User = get_user_model()
     ingredients = Ingredient.objects
     foods = Food.objects
+    search_term=''
+    if 'search_box' in request.GET:
+        search_term = request.GET['search_box']
+        foods = foods.filter(name__icontains=search_term)
+    
     if request.user.is_authenticated:
         meals = Meal.objects.filter(user=request.user)
     else:    
-        meals = None
+        meals = Noneh
     return render(request, 'daycal/home.html', {'foods':foods,'meals':meals})
 
 def addmeal(request):
