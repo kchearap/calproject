@@ -24,9 +24,7 @@ class Meal(models.Model):
     foods = models.ManyToManyField(Food)
     cal_per_day = models.SmallIntegerField(null=True,default=2000)
     
+    @property
     def calculate_cal(self):
         return sum(food.calorie for food in self.foods.all())
     
-    def save(self, *args, **kwargs):
-        self.cal_per_day = self.calculate_cal()      
-        super().save(*args, **kwargs)  # Call the "real" save() method.
