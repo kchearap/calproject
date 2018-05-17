@@ -18,6 +18,8 @@
     <div class="col-sm-8 text-left"> 
       <div class="album py-5 bg-light">
         <div class="container">
+               <form method="POST" action="{% url 'addmeal' %}" >{% csrf_token %}
+
           <div class="row">
 {% for food in foods.all %}
             <div class="col-md-4">
@@ -45,7 +47,6 @@
 
           </div>
                {% if user.is_authenticated %}
-               <form method="POST" action="{% url 'addmeal' %}">
                <div class="form-group row">
   <label for="datepicker" class="col-sm-2 col-form-label">Date</label>
     <div class="col-sm-3">
@@ -79,11 +80,11 @@
     $('#datepicker').datepicker("setDate", new Date());
 </script>
       <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
       {% endif %}
         </div>
       </div>
     </div>
+      </form>
 
     <div class="col-sm-2 sidenav">
     <H5> History </H5>
