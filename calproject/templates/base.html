@@ -71,7 +71,7 @@
         <div class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
             <span class="navbar-text">
-              Welcome User <code class="text-info">{{ user.get_username }}</code> , Your calories per day is <code class="text-info">{{ user.cal_per_day }}</code>
+              Welcome User <code class="text-info">{{ user.get_username }}</code> , Your calories needed in a day is <code class="text-info">{{ user.cal_per_day }}</code>
             </span>
          {% else %}
             <span class="navbar-text">

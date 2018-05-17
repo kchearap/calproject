@@ -15,7 +15,7 @@ def home(request):
     if request.user.is_authenticated:
         meals = Meal.objects.filter(user=request.user).order_by('-create_time')
     else:    
-        meals = Noneh
+        meals = None
     return render(request, 'daycal/home.html', {'foods':foods,'meals':meals})
 
 def addmeal(request):

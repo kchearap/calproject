@@ -8,10 +8,20 @@
 <br />
 {% endif %}
 
-<h1>Add meal</h1>
+<h1>Complete!</h1>
 
 {% csrf_token %}
+<div class="container-fluid text-left">
+  <div class="row">
+    <div class="col-sm">
+      <div class="alert alert-primary" role="alert">
+           Food(s) Added
+      </div>
+    </div>
+  </div>  
+<br/>
+<a class="btn btn-primary" href="/" role="button">Home</a>
 
-Done
+</div>
 
 {% endblock %}

@@ -90,7 +90,13 @@
     <H5> History </H5>
       {% for meal in meals.all %}
       <div class="well">
-        <p>Date {{ meal.create_time }} Calories {{ meal.calculate_cal }}</p>
+        <p>Date {{ meal.create_time }} Calories {{ meal.calculate_cal }} 
+        {% if meal.calculate_cal > user.cal_per_day %}
+          <font color="red">Over!</font>
+        {% else %}
+        <font color="green">Good</font>
+        {% endif %}
+        </p>
       </div>
       {% endfor %}
     </div>
