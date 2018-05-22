@@ -17,7 +17,7 @@
   <div class="col-sm-3">
     <input type="text" class="form-control" id="inputName" placeholder="UserName" name="username">
   </div>
-</div>  
+</div>
 <div class="form-group row">
   <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
   <div class="col-sm-3">
@@ -27,7 +27,7 @@
 <div class="form-group row">
   <label for="datepicker" class="col-sm-2 col-form-label">Birth Date</label>
     <div class="col-sm-3">
-        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" name="birth_date">
+        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" name="birth_date" required>
     </div>
 </div>
 
@@ -40,12 +40,12 @@
             font-size: 0.875em;
         }
         /* solution 2: the original datepicker use 20px so replace with the following:*/
-        
+
         .datepicker td, .datepicker th {
             width: 1.5em;
             height: 1.5em;
         }
-        
+
     </style>
 <script type="text/javascript">
     $('#datepicker').datepicker({
@@ -59,25 +59,25 @@
 <div class="form-group row">
   <label for="inputHeight" class="col-sm-2 col-form-label">Height</label>
   <div class="col-sm-3">
-    <input type="number" class="form-control" id="inputHeight" placeholder="150.0" step="0.1" min="0.1" name="height">
+    <input type="number" class="form-control" id="inputHeight" placeholder="150.0" step="0.1" min="0.1" name="height" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="inputS" class="col-sm-2 col-form-label">Weight</label>
   <div class="col-sm-3">
-    <input type="number" class="form-control" id="inputWeight" placeholder="50.00" step="0.01" min="0.01" name="weight">
+    <input type="number" class="form-control" id="inputWeight" placeholder="50.00" step="0.01" min="0.01" name="weight" required>
   </div>
 </div>
 <div class="form-group row">
   <label for="sex" class="col-sm-2 col-form-label">Sex</label>
   <div class="col-sm-3">
-  <select class="custom-select mr-sm-2" id="sex" name="sex">
+  <select class="custom-select mr-sm-2" id="sex" name="sex" required>
     <option selected>Choose...</option>
     <option value="M">Male</option>
     <option value="F">Female</option>
   </select>
   </div>
-</div> 
+</div>
 <div class="form-group row">
   <label for="inputPassword1" class="col-sm-2 col-form-label">Password</label>
   <div class="col-sm-3">
